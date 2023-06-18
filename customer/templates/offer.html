@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Doze Cafe</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="{%static 'css/bootstrap.min.css'%}">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{%static 'css/responsive.css'%}">
+      <!-- fevicon -->
+      <link rel="icon" href="{%static 'images/fevicon.png'%}" type="image/gif" />
+      <!-- font css -->
+      <link href="{%static 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap'%}" rel="stylesheet">
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{%static 'css/jquery.mCustomScrollbar.min.css'%}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="{%static 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'%}">
+      <script src="https://kit.fontawesome.com/84e82c9d94.js" crossorigin="anonymous"></script>
+      
+   </head>
+   <body class="p-3 m-0 border-0 bd-example" style="background-color: aliceblue;">
+
+
+
+   <style>
+      img:hover {
+         box-shadow:  0 0 2px 1px rgba(0, 0, 0, 0.5);
+       }
+       shadow:hover {
+         box-shadow:  0 0 3px 1px rgba(0, 140, 186, 0.5);
+       }
+   </style>
+<!-- nav -->
+      <nav class="navbar bg-primary" data-bs-theme="dark">
+         <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="">
+      <!-- <img src="" class="w3-circle" style="height:50px;width:50px" alt="Avatar"> -->
+    </div>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
+      <ul class="navbar-nav">
+        <h1 class="nav-link mr-5" href="" title="Logined" style="color: azure;"><img src="{%static '../static/images/camerastore-removebg-preview.png'%}" style="height:65px;width:200px" alt=""></h1>
+      </ul>
+      <form class="d-flex" role="search" style="margin-right: 300px;">
+        <input class="form-control me-2 position-absolute top-0 start-100 translate-middle " type="search" placeholder="Search" title="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+    <a class="nav-link ml-5" href="" style="color: azure;"><img src="{%static '../static/images/purepng.com-shopping-cartshoppingcarttrolleycarriagebuggysupermarkets-1421526532323sy0um.png'%}" style="margin-left:100px;height:50px;width:50px" alt=""></a>
+  </div>
+</nav>
+<a class="nav-link ml-5" href="{%url 'special/cart'%}" title="Cart" style="color: azure;"><img src="{%static '../static/images/purepng.com-shopping-cartshoppingcarttrolleycarriagebuggysupermarkets-1421526532323sy0um.png'%}" style="margin-left:250px;height:50px;width:50px" alt=""></a>
+<a class="navbar-brand" href="{%url 'index-camera'%}"><img src="{%static '../static/images/white-home-icon-transparent-png-6.png'%}"style="height:50px;width:50px" alt=""></a>
+<a class="nav-link mr-3" href="{%url 'Special/order' %}" title="Oders" style="color: azure;"><img src="{%static '../static/images/order-icon-png-26.jpg'%}" style="height:45px;width:45px" alt=""></a>
+{%if request%}
+<a href="{%url 'profile-view'%}"><img src="{%static '../static/images/user-login-icon-14.png'%}" class="w3-circle" title="{{request.user.first_name}} {{request.user.last_name}}" style="height:50px;width:50px" alt="Avatar"></a>
+{%else%}
+<a href="{%url 'login'%}" ><img src="{%static '../static/images/xservices-3.png.pagespeed.ic.dnSDR-6EFD2.png '%}" class="w3-circle" title="Login" style="height:50px;width:50px" alt="Avatar"></a>
+{%endif%}
+</ul>
+       </nav>
+<!-- end nav -->
+         {%block body%}
+<!-- offer box -->
+
+
+<div class="container">
+    <div class="row">
+       <h1 class="coffee_taital mt-5"><img src="../static/images/camerastore-removebg-preview.png"></h1>
+       <div class="bulit_icon"><img src=""></div>
+    </div>
+ </div>
+<!-- special order cancell  -->
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            {%if messages%}
+{%for msg in messages%}
+{% for message in messages %}
+         <div class="message">
+        <div class="alert alert-warning alert-dismissible fade show" style="margin-left: 50px;" role="alert">
+        <strong>{{request.user.first_name}} {{request.user.last_name}} </strong> {{msg}}
+    </div>
+{% endfor %}
+{%endfor%}
+{%endif%}
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<!-- special order cancell end -->
+  <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-5 ">
+          <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center ">
+          {%for p in off%}
+          <div class=" mb-4 ml-5" style="width: 18rem;" >
+             
+            {%if p.image%} 
+            <a href="" ><img src="{{p.image.url}}" class="card-img-top " style="scroll-timeline: 0.100ms;"  alt="Avatar"></a>
+            
+            {%else%}
+            <a type="button"><img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /></a>
+            {%endif%}
+
+            <div class="card-body">
+              <h5 class="card-title"><strong>{{p.product_name}}</strong></h5>
+              <h5 class="card-text"><strong>Company: </strong>{{p.company_name}}</h5>
+              <h5 class="card-text"><strong>Category: </strong>{{p.category}}</h5>
+              <h5 class="card-text"><strong>Product About: </strong>{{p.decription}}</h5>
+              <h5 class="card-text"><strong>Price: </strong> <del>{{p.price}}</del></h5>
+              <h5 class="card-text"><strong>Discount Price: </strong> {{p.discount}}</h5>
+              <h5 class="card-text"><strong>Discount: </strong>{{p.offerPoint}}%</h5>
+              <h5 class="card-text"><strong>Offer Start: </strong> {{p.start_date}}</h5>
+              <h5 class="card-text"><strong>Offer End: </strong> {{p.end_date}}</h5>
+              <h5 class="card-text"><strong>Offer Available: </strong> {{p.is_active}}</h5>
+              
+              <form action="{%url 'Offer/cart' p.id %}" method="post">        
+                {%csrf_token%}
+                <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem;" name="qty"/>
+            <button class="btn btn-outline-dark flex-shrink-0 form-control mt-5" type="submit">
+                <i class="bi-cart-fill me-1"></i>
+                Add Cart  
+            </button>
+            </form>
+
+
+            </div>
+          </div>
+          {%endfor%}
+              </div>
+              </div>
+              </section>
+<!-- end offer box -->
+         {%endblock%}
+
+      <!-- footer section start -->
+    <!-- footer section start -->
+
+    <div class="footer_section layout_padding">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="footer_logo">
+              <a href=""
+                ><img src=""
+              /></a>
+            </div>
+            <h1 class="adderss_text btn btn-primary">Contact Us</h1>
+            <div class="map_icon">
+              <img src="" /><span
+                class="paddlin_left_0 "
+                >Page when looking at its</span
+              >
+            </div>
+            <div class="map_icon">
+              <img src="" /><span
+                class="paddlin_left_0"
+                >+7586656566</span
+              >
+            </div>
+            <div class="map_icon">
+              <img src="" /><span
+                class="paddlin_left_0"
+                >volim@gmail.com</span
+              >
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <h1 class="adderss_text btn btn-light">Doctors</h1>
+            <div class="hiphop_text_1">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form, by
+              injected humour,
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <h1 class="adderss_text btn btn-light">Useful Links</h1>
+            <div class="Useful_text">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered ,
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <h1 class="adderss_text btn btn-light">Newsletter</h1>
+            <div class="social_icon">
+              <ul>
+                <li>
+                  <a href=""
+                    ><img src=""
+                  /></a>
+                </li>
+                <li>
+                  <a href=""
+                    ><img src=""
+                  /></a>
+                </li>
+                <li>
+                  <a href=""
+                    ><img src=""
+                  /></a>
+                </li>
+                <li>
+                  <a href=""
+                    ><img src=""
+                  /></a>
+                  <i class="fa-brands fa-facebook fa-beat-fade fa-xl mb-4"></i>
+                  <i class="fa-brands fa-instagram fa-beat-fade fa-xl ml-3"></i>
+                  <i class="fa-brands fa-twitter fa-beat-fade fa-xl ml-3"></i>
+                  <i class="fa-brands fa-youtube fa-beat-fade fa-xl ml-3"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer section end -->
+    <!-- copyright section start -->
+    <div class="copyright_section">
+      <div class="container">
+        <p class="copyright_text">
+          2023 All Rights Reserved. Design by
+          <a href="https://instagram.com/aqua_yt__?igshid=NGExMmI2YTkyZg==">Anandhu Rajan</a>
+        </p>
+      </div>
+    </div>
+      <!-- footer section end -->
+      <!-- footer section end -->
+      <script src="{%static 'js/jquery.min.js'%}"></script>
+      <script src="{%static 'js/popper.min.js'%}"></script>
+      <script src="{%static 'js/bootstrap.bundle.min.js'%}"></script>
+      <script src="{%static 'js/jquery-3.0.0.min.js'%}"></script>
+      <script src="{%static 'js/plugin.js'%}"></script>
+      <!-- sidebar -->
+      <script src="{%static 'js/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+      <script src="{%static 'js/custom.js'%}"></script>
+   </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

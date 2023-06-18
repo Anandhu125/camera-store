@@ -1,0 +1,94 @@
+{%extends 'base.html'%}
+  {%block body%}
+
+
+<div class="shadow" >
+   <nav class="navbar" style="background-color: #e3f2fd;">
+      <a href="https://in.canon/en/consumer"><img src="../static/images/th (39).jpg" class="w3-circle shadow" style="height:100px;width:200px" alt="Avatar"></a>
+      <a href="https://www.sony.co.in/"><img src="../static/images/th (40).jpg" class="w3-circle shadow" style="height:50px;width:200px" alt="Avatar"></a>
+      <a href="https://www.panasonic.com/in/"><img src="../static/images/th (41).jpg" class="w3-circle shadow" style="height:50px;width:200px" alt="Avatar"></a>
+      <a href="https://www.nikon.co.in/"><img src="../static/images/th (42).jpg" class="w3-circle shadow" style="height:50px;width:200px" alt="Avatar"></a>
+      <a href="https://www.fujifilm.com/in/en"><img src="../static/images/th (43).jpg" class="w3-circle shadow" style="height:50px;width:200px" alt="Avatar"></a>
+      <a href="https://www.olympus-global.com/"><img src="../static/images/th (44).jpg" class="w3-circle shadow" style="height:50px;width:200px" alt="Avatar"></a>
+    </nav>
+  
+    <div class="card text-bg-dark mt-3" style="background-image: url(../static/images/Design-PNG-File.png);">
+      <img src="../static/images/man-photographing-removebg-preview.png" alt="" style="height:250px;width:250px;margin-left: 1617px;">
+      <div class="card-img-overlay">
+        <h5 class="card-title" style="margin-left: 600px;"><img src="../static/images/camerastore-removebg-preview.png" alt=""></h5>
+        <p class="card-text" style="font-family: 'Times New Roman', Times, serif;">With so many different camera brands offering a wide range of cameras, it can be hard to narrow down the best of the best. Besides, with camera technology as advanced as it is these days, a good camera from any brand will get the job done. The upshot of that is that choosing one over another mostly comes down to personal preferences and needs. Still, each brand has quirks and differences, so it's good to be aware of what each one brings to the table.</p>
+        <p class="card-text" style="font-family: 'Times New Roman', Times, serif;">Last updated 3 mins ago</p>
+      </div>
+    </div>
+
+<!-- order place message-->
+{%if message%}
+{%for plc in message%}
+    <div class="message">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{request.user.first_name}} {{request.user.last_name}} </strong> {{plc}}
+    </div>
+
+{%endfor%}
+{%endif%}
+<!-- order place message -->
+<!-- oder remove cart -->
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-4"></div>
+    <div class="col-4">
+      {%if messages%}
+{%for plc in messages%}
+<div class="alert alert-danger" role="alert">
+  <strong>{{request.user.first_name}} {{request.user.last_name}} </strong> {{plc}}
+</div>
+
+{%endfor%}
+{%endif%}
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>
+<!-- end oder remove cart -->
+
+      <!-- camera section start -->
+      <div class="container">
+        <div class="row">
+
+           <div class="bulit_icon"><img src=""></div>
+        </div>
+     </div>
+
+      <section class="py-5">
+          <div class="container px-4 px-lg-5 mt-5 ">
+              <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center ">
+              {%for p in products%}
+              
+              <div class=" mb-4 ml-5" style="width: 18rem;" >
+                
+                {%if p.image%} 
+                <a href="{%url 'Camera-details' p.pk%}" ><img src="{{p.image.url}}" class="card-img-top " style="scroll-timeline: 0.100ms;"  alt="Avatar"></a>
+                
+                {%else%}
+                <a type="button"><img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /></a>
+                {%endif%}
+
+                <div class="card-body">
+                  <h5 class="card-title"><strong>{{p.camera_name}}</strong></h5>
+                  <h5 class="card-text"><strong>Company: </strong>{{p.company_name}}</h5>
+                  <h5 class="card-title"><strong>Category:</strong>{{p.category}}</h5>
+                  <h5 class="card-text"><strong>Product About: </strong>{{p.decription}}</h5>
+                  <h5 class="card-text"><strong>Rs: </strong> {{p.price}}</h5>
+                  <h5 class="card-text"><strong>Stock Active/Inactive: </strong> {{p.is_active}}</h5>
+                  
+                  <!-- <a href="#" class="btn btn-primary form-control" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></a> -->
+                </div>
+              </div>
+              {%endfor%}
+                  </div>
+                  </div>
+                  </section>
+
+                  <!-- camera section end-->
+                  <hr class="text-success">
+                  {%endblock%}
